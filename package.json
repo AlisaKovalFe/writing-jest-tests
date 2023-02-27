@@ -1,7 +1,7 @@
 {
-  "name": "writing-jest-tests",
+  "name": "jesttests",
   "version": "1.0.0",
-  "description": "",
+  "description": "В репозитории есть 3 js файла с готовыми и уже экпортированными функциями. Ваша задача написать к ним тесты. Файл для тестов называется writeTestsHere.js. К каждой функции напишите не менее 5 разных тестов!",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -11,5 +11,13 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^26.6.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlisaKovalFe/writing-jest-tests.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlisaKovalFe/writing-jest-tests/issues"
+  },
+  "homepage": "https://github.com/AlisaKovalFe/writing-jest-tests#readme"
 }
