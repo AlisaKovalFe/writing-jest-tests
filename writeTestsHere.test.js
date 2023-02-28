@@ -2,7 +2,7 @@ const getSum = require('./1.js');
 const arithmetic = require('./2.js');
 const checkNumber = require('./3.js')
 
-describe('Getting sum', () => {
+describe('Sum of arrays elements', () => {
     const arr = [5, 2, 11]
     const arr2 = [0.1, 0.2]
     test('should return sum of arrays elements', () => {
@@ -20,23 +20,27 @@ describe('Getting sum', () => {
         expect(getSum(arr)).toBeLessThanOrEqual(18);
     })
 
-
-    test('should return truthy', () => {
+    test('check if a result is not falsy', () => {
         expect(getSum(arr2)).toBeTruthy();
+        expect(getSum(arr)).not.toBeFalsy();
+    })
+
+    test('check if a result defined', () => {
+        expect(getSum(arr)).toBeDefined();
     })
 })
 
-describe('Getting result of arithmetic operations', () => {
+describe('Result of arithmetic operations', () => {
     const a = 10
     const b = 5
 
-    test('should return result of operation from numbers', () => {
+    test('should return result of operation', () => {
         expect(arithmetic(a, b, 'add')).toBe(15)
         expect(arithmetic(a, b, 'subtract')).toBe(5)
         expect(arithmetic(a, b, 'multiply')).toBe(50)
         expect(arithmetic(a, b, 'divide')).toEqual(2)
         expect(arithmetic(a, b, 'multiply')).not.toBeNaN()
-        expect(arithmetic(a, 0, 'divide')).toBe(Infinity) // в консоли вообще-то возращает undefined, надо уточнить
+        expect(arithmetic(a, 0, 'divide')).toBe(Infinity)
     })
 
     test('should return value comparing with other values', () => {
@@ -46,43 +50,46 @@ describe('Getting result of arithmetic operations', () => {
         expect(arithmetic(a, b, 'subtract')).toBeLessThanOrEqual(10);
     })
 
-    test('should return true or false after arithmetic operation execution', () => {
+    test('check if a result of operation is true or false', () => {
         expect(arithmetic(a, b, 'add')).toBeTruthy()
         expect(arithmetic(a, b, 'multiply')).not.toBeFalsy();
         expect(arithmetic(null, null, 'divide')).toBeFalsy();
     })
 
-    test('checking a result is NaN', () => {
+    test('Check if a result is NaN', () => {
         const a = NaN
         const b = NaN
         expect(arithmetic(a, b, 'add')).toBeNaN()
         expect(arithmetic(a, b, 'divide')).toBeNaN()
     })
 
-    test('checking a result is defined', () => {
+    test('Check if a result is defined', () => {
         expect(arithmetic(a, b, 'add')).toBeDefined()
         expect(arithmetic(a, b, 'multiply')).toBeDefined()
     })
 })
 
-describe('Checking even number', () => {
-    test('should return true or false result', () => {
+describe('Even number of result', () => {
+    test('check if a result even on not (true or false)', () => {
         expect(checkNumber(8)).toBe(true)
         expect(checkNumber(7)).toBe(false)
         expect(checkNumber(56)).toEqual(true)
         expect(checkNumber(13)).toBeFalsy()
         expect(checkNumber(20)).toBeTruthy()
+        expect(checkNumber(null)).toBeTruthy() // как это нечисло делится на 2 без остатка, не понимаю
+        expect(checkNumber(NaN)).toBeFalsy()
+        expect(checkNumber(undefined)).toBeFalsy()
     })
 
-    // test('should return null', () => {
-    //     expect(checkNumber(null)).toBeNull()
-    // })
+    test('check if a result in not null', () => {
+        expect(checkNumber(null)).not.toBeNull()
+    })
 
-    // test('should return  NaN', () => {
-    //     expect(checkNumber(Nan)).toBeNaN()
-    // })
+    test('check if a result is not NaN', () => {
+        expect(checkNumber(NaN)).not.toBeNaN()
+    })
 
-    test('checking a result is defined', () => {
+    test('check if a result is defined', () => {
         expect(checkNumber(2)).toBeDefined()
         expect(checkNumber(9)).not.toBeUndefined()
     })
